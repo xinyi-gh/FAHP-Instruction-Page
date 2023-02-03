@@ -12,7 +12,7 @@
     <body>
         <header>
             <h1>The Fusion of Subjectivity and Objectivity</h1>
-            <h2>An interactive instruction about Fuzzy Analytic Hierarchy Process (FAHP)</h2>
+            <h2>An interactive instruction about FAHP and FCE</h2>
             <span>By: <a href="https://github.com/xinyi-gh">Xinyi</a></span> <br /> <br />
             <a href="javascript:alert(`还没做呢`)">中文版本</a>
         </header>
@@ -31,7 +31,7 @@
             Let's begin to build a FAHP model. <br />
         <div class="fixed">
             <svg width="570" height="300" id="modelSVG"></svg> <br />
-            <table style="display: none;">
+            <table>
                 <caption>indicators comparing</caption>
                 <tbody id="indicatorMatrix"></tbody>
             </table>
@@ -40,14 +40,14 @@
                 <tbody id="objectMatrix"></tbody>
             </table>
         </div>
-        <div style="position: sticky;float:right;top: 0px;padding: 10px;height:100cm"></div> <!-- JUST TEMPORARY -->
+        <div style="position: sticky;float:right;top: 0px;padding: 10px;height:5000px"></div> <!-- JUST TEMPORARY -->
         <h2>1 Establishing the Indicators</h2>
             The indicators are used to evaluate the objects, and the proper indicators should have features most relevant to the objects. The relationship between the indicators can be multi-layer structure, but this instrcution will just use single-layer structure . <br /> <br />
             How many indicators do you want? (more than one) <input id="indicatorNum" type="range" value="3" min="2" max="6" stpe="1" oninput="update();" /> <span id="indicatorNumDisplay"></span> <br />
             Then input the name of the <span id="indicatorNumDisplay"></span> indicators. <br />
             <div id="indicatorInputs"></div>
             <b>Look to the right, the model is beginning to build!</b>
-        <h2>2 Building the Comparison Matrix</h2>
+        <h2 id="section2">2 Building the Comparison Matrix</h2>
             In the previous part, we established a set of the indicators <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mo>=</mo><mo>{</mo><msub><mi>I</mi><mn>1</mn></msub><mo>,</mo><msub><mi>I</mi><mn>2</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>I</mi><mi>n</mi></msub><mo>}</mo></math>. <br />
             Next, we'll compare and score the indicators <b>pair by pair</b>. FAHP uses a <b>matrix</b> to do this. <br /> <br />
             Let matrix <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>=</mo><mfenced open="[" close="]"><mtable><mtr><mtd><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd><msub><mi>a</mi><mn>12</mn></msub></mtd><mtd><mo>&#x2026;</mo></mtd><mtd><msub><mi>a</mi><mrow><mn>1</mn><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><msub><mi>a</mi><mn>21</mn></msub></mtd><mtd><msub><mi>a</mi><mn>22</mn></msub></mtd><mtd><mo>&#x2026;</mo></mtd><mtd><msub><mi>a</mi><mrow><mn>2</mn><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22F1;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd></mtr><mtr><mtd><msub><mi>a</mi><mrow><mi>n</mi><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>a</mi><mrow><mi>n</mi><mn>2</mn></mrow></msub></mtd><mtd><mo>&#x2026;</mo></mtd><mtd><msub><mi>a</mi><mrow><mi>n</mi><mi>n</mi></mrow></msub></mtd></mtr></mtable></mfenced></math> <br />
@@ -112,10 +112,11 @@
                 <mo>=</mo>
                 <mfrac id="formula1"></mfrac>
             </math> <br />
-            The specific meaning of this formula is beyond this introduction, so just use it in this part. <br />
+            The specific meaning of this formula is beyond this instrtuction, so just use it in this part. <br />
             Finally we get a set of weights of the indicators 
             <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula2"><mi>W</mi><mo>=</mo><mo>{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>}</mo></math> <br />
-            <b>Look to the right, the weights are displayed in the model. You can change the numbers and see how the weights change.</b>
+            <b>Look to the right, the weights are displayed in the model. You can change the numbers and see how the weights change.</b> <br /> <br />
+            Technically, the FAHP model has been completely built here. But in order to show its application, we'll use it to evaluate something. The method we use called <b>Fuzzy Comprehensive Evaluation (FCE)</b>.
         <h2>4 Evaluating the Objects</h2>
             <h3>4.1 Establishing the Objects</h3>
                 After we get the weight of the indicators, we can use it to evaluate something. In order to reflect the differences, it's recommended to have more than 1 objects. <br />
@@ -125,7 +126,7 @@
                 <div id="objectInputs"></div>
                 <b>As you can see, the objects are displayed in the model on the right.</b>
             <h3>4.2 Building the Membership Matrix</h3>
-                In order to evaluate the objects, we need some imformation about the objects first. Let a set of comment <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi><mo>=</mo><mo>{</mo><mi>E</mi><mi>x</mi><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>,</mo><mi>G</mi><mi>o</mi><mi>o</mi><mi>d</mi><mo>,</mo><mi>P</mi><mi>o</mi><mi>o</mi><mi>r</mi><mo>}</mo></math>
+                In order to evaluate the objects, we need some imformation about the objects first. Let a set of evaluation <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi><mo>=</mo><mo>{</mo><mi>E</mi><mi>x</mi><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>,</mo><mi>G</mi><mi>o</mi><mi>o</mi><mi>d</mi><mo>,</mo><mi>P</mi><mi>o</mi><mi>o</mi><mi>r</mi><mo>}</mo></math>
                     (You can change this if you like but not in this page). <br />
                 Then let fuzzy matrix <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>W</mi><mi>F</mi></msub><mo>=</mo><mfenced open="[" close="]"><mtable><mtr><mtd><msub><mi>f</mi><mn>11</mn></msub></mtd><mtd><msub><mi>f</mi><mn>12</mn></msub></mtd><mtd><msub><mi>f</mi><mn>13</mn></msub></mtd></mtr><mtr><mtd><msub><mi>f</mi><mn>21</mn></msub></mtd><mtd><msub><mi>f</mi><mn>22</mn></msub></mtd><mtd><msub><mi>f</mi><mn>23</mn></msub></mtd></mtr><mtr><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd></mtr><mtr><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>2</mn></mrow></msub></mtd><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>3</mn></mrow></msub></mtd></mtr></mtable></mfenced></math> <br />
                 You may notice that it's a fuzzy matrix and it only has 3 columns. This is related to the <b>membership</b> in fuzzy theory. Membership is a number from 0 to 1, which simply means <b>how close you are to the center</b> (The larger the number, the closer you are. If the number is 1, you're in the center). In this instruction, "Excellent","Good","Poor" are the center.<br />
@@ -141,15 +142,58 @@
                     <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mrow><mi>i</mi><mn>3</mn></mrow></msub></math>
                     indicates "how poor <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>I</mi><mi>i</mi></msub></math> 
                     is on this object". It's kind of like mixing the pigments.<br />
-                    Since we don't want a object "very excellent" and "very poor" at the same time, we add a rule: <br /> <br />
+                    Since we don't want a object is "very excellent" and "very poor" at the same time, we add a rule: <br /> <br />
                     <math xmlns="http://www.w3.org/1998/Math/MathML" class="block"><munderover><mo>&#x2211;</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>f</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mn>1</mn></math>
                     in this case, <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>f</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>f</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub><mo>+</mo><msub><mi>f</mi><mrow><mi>i</mi><mn>3</mn></mrow></msub><mo>=</mo><mn>1</mn></math>. <br />
                     <b>Now fill the table on the right for all objects (Notice the page turning button).</b>
-            <h3>4.3 Calculating the Score of the Objects</h3>
+            <h3>4.3 Calculating the Evaluation Results</h3>
                 In order to combine the objects' information and the weight of the indicators, we simply multiply <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula2"><mi>W</mi></math> 
                     and <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula2"><msub><mi>W</mi><mi>F</mi></msub></math>. <br />
-                
-        <hr />
-        <p style="text-align: center">UNFINISHED</p>
+                Let evaluation matrix <br />
+                <math xmlns="http://www.w3.org/1998/Math/MathML" class="block"><mi>R</mi><mo>=</mo><mi>W</mi><mo>&#xD7;</mo><msub><mi>W</mi><mi>F</mi></msub><mo>=</mo><mfenced><mrow><msub><mi>W</mi><mn>1</mn></msub><mo>,</mo><msub><mi>W</mi><mn>2</mn></msub><mo>,</mo><mo>&#x22EF;</mo><mo>,</mo><msub><mi>W</mi><mi>n</mi></msub></mrow></mfenced><mo>&#xD7;</mo><mfenced open="[" close="]"><mtable><mtr><mtd><msub><mi>f</mi><mn>11</mn></msub></mtd><mtd><msub><mi>f</mi><mn>12</mn></msub></mtd><mtd><msub><mi>f</mi><mn>13</mn></msub></mtd></mtr><mtr><mtd><msub><mi>f</mi><mn>21</mn></msub></mtd><mtd><msub><mi>f</mi><mn>22</mn></msub></mtd><mtd><msub><mi>f</mi><mn>23</mn></msub></mtd></mtr><mtr><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd><mtd><mo>&#x22EE;</mo></mtd></mtr><mtr><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>2</mn></mrow></msub></mtd><mtd><msub><mi>f</mi><mrow><mi>n</mi><mn>3</mn></mrow></msub></mtd></mtr></mtable></mfenced><mo>=</mo><mfenced><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo>,</mo><msub><mi>r</mi><mn>3</mn></msub></mrow></mfenced></math> <br />
+                For example, the evaluation matrix of object1 is calculated as: <br /> <br />
+                <math xmlns="http://www.w3.org/1998/Math/MathML" class="block" id="formula3"></math> <br />
+                <b>You can change the membership of object1 and see how the result changes.</b>
+            <h3>4.4 Analysing the Evaluation Results</h3>
+                You may be confused: "What do these three numbers mean?". Well, there're many ways to analyse them. This instrtuction will show you 2 methods, from a <b>qualitative</b> and <b>quantitative</b> perspective.
+                <h4>4.4.1 Maximum Membership Principle</h4>
+                    In fact, matrix <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math> 
+                        follows law <math xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>r</mi><mrow><mi>i</mi></mrow></msub><mo>=</mo><mn>1</mn></math>
+                        which is similar to matrix <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>W</mi><mi>F</mi></msub></math>. 
+                        So <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mi>i</mi></msub></math> 
+                        still means the membership. In this case, the evaluation which has the maximum membership in <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math> 
+                        means this object is <b>closest</b> to this evaluation and this evaluation os called the object's <b>rank</b>. (If threre're 2 or more evaluation has the same maximum membership we can just pick one) <br />
+                    For example, the evaluation result of object1 is <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula4"></math>. 
+                        So object1's rank is "<b id="object1Rank"></b>".    
+                <h4>4.4.2 Weighted Average Principle</h4>
+                    If we want to score the object, "Excellent" should earn <b>more score</b> than "Poor" according to the common sense. Let's assume that the weight of each evaluations is <b>3, 2, and 1</b>. 
+                        According to the rule of <b>weighted average</b>. The total score is: <br /> <br />
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" class="block"><mi>S</mi><mo>=</mo><mn>3</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>3</mn></msub></math> <br />
+                        For example, the evaluation result of object1 is <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula4_"></math>. So object1's score is <b id="object1Score"></b>. <br /> <br />
+                <b>The ranks and the scores are displayed on the model, we finish it!</b>
+            <h2>5 The Summary</h2>
+                In the instrtuction we learned about FAHP and FCE, which are used to evaluate and make decision. Let's review the steps: <br />
+                <div style="float: left">
+                    FAHP
+                    <ul>
+                        <li>establishing the indicators</li>
+                        <li>building the comparison Matrix</li>
+                        <li>calculating the weight of the indicators</li>
+                    </ul>
+                </div>
+                <div style="float: right">
+                    FCE
+                    <ul>
+                        <li>establishing the objects</li>
+                        <li>building the membership matrix</li>
+                        <li>calculating the evaluation results</li>
+                        <li>analysing the evaluation results</li>
+                    </ul>
+                </div> <br /> <br /> <br /> <br /> <br /> <br />
+                Kind of similar...<br />
+                The key idea of FAHP is to compare <b>pair by pair</b>, and the concept "<b>consistent</b>" is also important. <br />
+                <b>Membership</b> is the core of FCE which also comes from <b>fuzzy thory</b>. Remember membership means <b>how close you are to the center</b>. <br /> <br />
+                By the way, you can try to use these methods in your life to make some decision. <br />
+                Hope you like this page! Farewell :)
     </body>
 </html>
