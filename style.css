@@ -1,0 +1,71 @@
+* {
+    font-family: "SimSun";
+}
+html {
+    width: 100%;
+}
+body {
+    padding: 50px;
+    padding-right: 0px;
+    font-size:20px;
+    height: 100%;
+}
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:97%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 3%;
+    
+    background-color: #222222;
+    color: whitesmoke;
+}
+header a {
+    color: whitesmoke;
+}
+.fixed {
+    position: sticky;
+    float:right;
+    top: 0px;
+    padding-top: 30px;
+}
+td.unchangeable, td.unchangeable input {
+    background-color: gainsboro;
+}
+td {
+    text-align: center;
+    border-style: groove;
+}
+td:has(p), td p {
+    background-color: lightgray;
+}
+td p {
+    word-break: break-all;
+    font-size: 15px;
+    width:50px;
+    height:50px;
+    margin: 0px;
+    overflow:hidden;
+}
+div#indicatorInputs, div#objectInputs {
+    margin: 5px;
+    padding: 5px;
+    width: 50%;
+    border-style: dashed;
+}
+table:has(tbody#indicatorMatrix), table:has(tbody#objectMatrix) {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+input[type=text] {
+    border: none;
+    border-bottom: solid;
+    font-size: 20px;
+    width: 40%;
+}
+
+math.block {
+    display: block;
+}
