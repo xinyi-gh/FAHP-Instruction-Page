@@ -390,9 +390,7 @@ function update() { // pay attention to the order
         document.getElementById("object1Score")
     );
 }
-window.onkeydown = () => {
-    alert(document.body.getBoundingClientRect().top);
-}
+
 window.onscroll = () => {
     let t = document.body.getBoundingClientRect().top
     document.getElementById("indicatorMatrix").parentElement.style.display = (t < -1000 && t > -2500) ? "" : "none";
