@@ -7,6 +7,8 @@ let objectScores = [];
 let objectPage = 0;
 let modelStep = 0;
 
+let WINDOW_SIZE = [window.innerWidth, window.innerHeight];
+
 function update_indicator_inputs() {
     var inputList = []
     let key = 0;
@@ -46,35 +48,42 @@ function update_object_inputs() {
 }
 
 function update_visualModel() {
-    // DEBUG
-    let renderIndicator = true, renderObject = true;
-    // DEBUG
-
-    const RECT_WIDTH = 150, RECT_HEIGHT = 35;
+    /*
+    width=1440, height=820
+    RECT_WIDTH=150, RECT_HEIGHT=35
+    INDICATOR_RECT_X = 40
+    OBJECT_RECT_X = 340
+    RECT_Y_BEGIN = 10
+    RECT_SPACE = 50
+    FONT_SIZE = 20
+    */
+    const RECT_WIDTH = 0.1 * WINDOW_SIZE[0], RECT_HEIGHT = 0.04 * WINDOW_SIZE[1];
     const INDICATOR_RECT_X = 40;
-    const OBJECT_RECT_X = 340;
-    const RECT_Y_BEGIN = 10
-    const RECT_SPACE = 50;
+    const OBJECT_RECT_X = 0.24 * WINDOW_SIZE[0];
+    const RECT_Y_BEGIN = 0.01 * WINDOW_SIZE[1];
+    const RECT_SPACE = 0.06 * WINDOW_SIZE[1];
+    const WEIGHT_TRANSFER_Y = 0.03 * WINDOW_SIZE[1];
+    const FONT_SIZE = 20;
 
     var SVGs = [];
     
     let indicatorY = RECT_Y_BEGIN;
     for (let i = 0; i < indicatorNum; i++) {
-        if (modelStep >= 0) {
+        if (modelStep >= 0) { // rect & name
             SVGs.push([<rect
                     width={RECT_WIDTH} height={RECT_HEIGHT} rx={20} ry={20}
                     x={INDICATOR_RECT_X} y={indicatorY}
                     fillOpacity={0} stroke={'#000000'} strokeWidth={5}
                 />,
                 <text
-                    x={INDICATOR_RECT_X + 10} y={indicatorY + 25} fontSize={20}>
+                    x={INDICATOR_RECT_X + 10} y={indicatorY + 25} fontSize={FONT_SIZE}>
                     {document.getElementById(`indicator_${i}`).value}
                 </text>,
             ]);
         }
-        if (modelStep >= 1) {
+        if (modelStep >= 1) { // weight
             SVGs.push(<text
-                x={INDICATOR_RECT_X - 40} y={indicatorY + 25} fontSize={20}>
+                x={0} y={indicatorY + WEIGHT_TRANSFER_Y} fontSize={FONT_SIZE}>
                 {indicatorWeights[i]}
             </text>)
         }
@@ -84,24 +93,24 @@ function update_visualModel() {
     
     let objectY = RECT_Y_BEGIN
     for (let i = 0; i < objectNum; i++) {
-        if (modelStep >= 2) {
+        if (modelStep >= 2) { // rect & name
             SVGs.push(<rect
                 width={RECT_WIDTH} height={RECT_HEIGHT} rx={20} ry={20}
                 x={OBJECT_RECT_X} y={objectY}
                 fillOpacity={0} stroke={'#000000'} strokeWidth={5}
             />);
             SVGs.push(<text
-                x={OBJECT_RECT_X + 10} y={objectY + 25} fontSize={20}>
+                x={OBJECT_RECT_X + 10} y={objectY + 25} fontSize={FONT_SIZE}>
                     {document.getElementById(`object_${i}`).value}
             </text>);
         }
-        if (modelStep >= 3) {
+        if (modelStep >= 3) { // rank & score
             SVGs.push(<text
-                x={OBJECT_RECT_X + RECT_WIDTH + 20} y={objectY + 10} fontSize={20}>
+                x={OBJECT_RECT_X + RECT_WIDTH + 20} y={objectY + 10} fontSize={FONT_SIZE}>
                     {objectRanks[i][0]}
             </text>);
             SVGs.push(<text
-                x={OBJECT_RECT_X + RECT_WIDTH + 10} y={objectY + 30} fontSize={20}>
+                x={OBJECT_RECT_X + RECT_WIDTH + 10} y={objectY + 30} fontSize={FONT_SIZE}>
                     {objectScores[i]}
             </text>);
         }
@@ -109,7 +118,7 @@ function update_visualModel() {
         objectY += RECT_SPACE;
     }
 
-    if (modelStep >= 2) { // draw the connecting lines
+    if (modelStep >= 2) { // connecting lines
         let indicatorY = RECT_Y_BEGIN;
         for (let i = 0; i < indicatorNum; i++) {
             let objectY = RECT_Y_BEGIN;
@@ -391,7 +400,14 @@ function update() { // pay attention to the order
     );
 }
 
-window.onscroll = () => {
+function win_onresize() {
+    WINDOW_SIZE = [window.innerWidth, window.innerHeight];
+    document.getElementsByTagName("svg")[0].setAttribute("width", 0.41 * WINDOW_SIZE[0]);
+    document.getElementsByTagName("svg")[0].setAttribute("height", 0.4 * WINDOW_SIZE[1]);
+
+    update();
+}
+function win_onscroll() {
     let t = document.body.getBoundingClientRect().top
     document.getElementById("indicatorMatrix").parentElement.style.display = (t < -1000 && t > -2500) ? "" : "none";
     document.getElementById("objectMatrix").parentElement.style.display = (t < -2500 && t > -4700) ? "" : "none";
@@ -403,4 +419,10 @@ window.onscroll = () => {
     if (t < -3850) modelStep = 3;
     if (modelStep != previous) update_visualModel();
 }
+
+window.onresize = win_onresize;
+window.onscroll = win_onscroll;
+
 update();
+win_onresize();
+win_onscroll();
