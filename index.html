@@ -40,7 +40,7 @@
                 <tbody id="objectMatrix"></tbody>
             </table>
         </div>
-        <div style="position: sticky;float:right;top: 0px;padding: 10px;height:5000px"></div> <!-- JUST TEMPORARY -->
+        <div class="left">
         <h2>1 Establishing the Indicators</h2>
             The indicators are used to evaluate the objects, and the proper indicators should have features most relevant to the objects. The relationship between the indicators can be multi-layer structure, but this instrcution will just use single-layer structure . <br /> <br />
             How many indicators do you want? (more than one) <input id="indicatorNum" type="range" value="3" min="2" max="6" stpe="1" oninput="update();" /> <span id="indicatorNumDisplay"></span> <br />
@@ -171,6 +171,8 @@
                         <math xmlns="http://www.w3.org/1998/Math/MathML" class="block"><mi>S</mi><mo>=</mo><mn>3</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn><mo>&#xD7;</mo><msub><mi>r</mi><mn>3</mn></msub></math> <br />
                         For example, the evaluation result of object1 is <math xmlns="http://www.w3.org/1998/Math/MathML" id="formula4_"></math>. So object1's score is <b id="object1Score"></b>. <br /> <br />
                 <b>The ranks and the scores are displayed on the model, we finish it!</b>
+            </div>
+            kkk
             <h2>5 The Summary</h2>
                 In the instrtuction we learned about FAHP and FCE, which are used to evaluate and make decision. Let's review the steps: <br />
                 <div style="float: left">
@@ -181,7 +183,7 @@
                         <li>calculating the weight of the indicators</li>
                     </ul>
                 </div>
-                <div style="float: right">
+                <div style="float: left">
                     FCE
                     <ul>
                         <li>establishing the objects</li>
@@ -189,11 +191,10 @@
                         <li>calculating the evaluation results</li>
                         <li>analysing the evaluation results</li>
                     </ul>
-                </div> <br /> <br /> <br /> <br /> <br /> <br />
-                Kind of similar...<br />
+                </div> <br /> <br /> <br /> <br /> <br /> <br /> <br />
                 The key idea of FAHP is to compare <b>pair by pair</b>, and the concept "<b>consistent</b>" is also important. <br />
                 <b>Membership</b> is the core of FCE which also comes from <b>fuzzy thory</b>. Remember membership means <b>how close you are to the center</b>. <br /> <br />
-                By the way, you can try to use these methods in your life to make some decision. <br />
+                You can try to use these methods in your life to make some decision. <br />
                 Hope you like this page! Farewell :)
     </body>
 </html>

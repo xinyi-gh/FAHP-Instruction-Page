@@ -15,14 +15,12 @@
 * {
     font-family: "SimSun";
 }
-html {
-    width: 100%;
-}
+
 body {
     padding: 50px;
     padding-right: 0px;
     font-size:20px;
-    height: 100%;
+    float:left;
 }
 header {
     position: absolute;
@@ -47,6 +45,9 @@ header a {
     float:right;
     top: 0px;
     padding-top: 30px;
+}
+.left {
+    width: 50%;
 }
 td.unchangeable, td.unchangeable input {
     background-color: gainsboro;
