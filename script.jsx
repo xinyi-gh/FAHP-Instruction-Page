@@ -9,6 +9,13 @@ let modelStep = 0;
 
 let WINDOW_SIZE = [window.innerWidth, window.innerHeight];
 
+function format(n_target, min, max, decimal=2) {
+    n_target = parseFloat(n_target);
+    if (n_target < min) n_target = min;
+    if (n_target > max) n_target = max;
+    return n_target.toFixed(decimal);
+}
+
 function update_indicator_inputs() {
     var inputList = []
     let key = 0;
@@ -156,9 +163,22 @@ function update_indicator_matrix() {
             } else {
                 row.push(<td><input type="number" id={`indicatorMatrix_${i}_${j}`} min="0.1" max="0.9" step="0.1" defaultValue="0.5" onInput={() => {
                     let self = document.getElementById(`indicatorMatrix_${i}_${j}`);
-                    if (self.value < 0.1) self.value = 0.1;
-                    if (self.value > 0.9) self.value = 0.9;
-                    document.getElementById(`indicatorMatrix_${j}_${i}`).value = (1 - self.value).toFixed(1);
+                    let opposite = document.getElementById(`indicatorMatrix_${j}_${i}`);
+                    self.value = format(self.value, 0.1, 0.9, 1);
+                    opposite.value = format(1 - self.value, 0.1, 0.9, 1);
+                    
+                    for (let k = 0; k < indicatorNum; k++) {
+                        if (k == i || k == j) continue;
+                        let a = document.getElementById(`indicatorMatrix_${i}_${k}`);
+                        let b = document.getElementById(`indicatorMatrix_${j}_${k}`);
+                        b.value = format(a.value - self.value + 0.5, 0.1, 0.9, 1);
+                        a.value = format(self.value - 0.5 + parseFloat(b.value), 0.1, 0.9, 1);
+
+                        let oppositeA = document.getElementById(`indicatorMatrix_${k}_${i}`);
+                        let oppositeB = document.getElementById(`indicatorMatrix_${k}_${j}`);
+                        oppositeA.value = format(1 - a.value, 0.1, 0.9, 1);
+                        oppositeB.value = format(1 - b.value, 0.1, 0.9, 1);
+                    }
                     update();
                 }} /></td>);
             }
@@ -182,30 +202,27 @@ function update_object_matrix() {
                     let first = document.getElementById(`objectMatrix${n}_${i}_0`);
                     let second = document.getElementById(`objectMatrix${n}_${i}_1`);
                     let third = document.getElementById(`objectMatrix${n}_${i}_2`);
-                    if (first.value < 0) first.value = 0;
-                    if (first.value > 1) first.value = 1;
-                    second.value = (1 - first.value - third.value < 0) ? 0 : (1 - first.value - third.value).toFixed(2);
-                    third.value = (1 - first.value - second.value < 0) ? 0 : (1 - first.value - second.value).toFixed(2);
+                    first.value = format(first.value, 0, 1);
+                    second.value = format(1 - first.value - third.value, 0, 1);
+                    third.value = format(1 - first.value - second.value, 0, 1);
                     update();
                 }} /></td>
                 <td><input type="number" id={`objectMatrix${n}_${i}_1`} min="0" max="1" step="0.1" defaultValue="0.33" onInput={() => {
                     let first = document.getElementById(`objectMatrix${n}_${i}_0`);
                     let second = document.getElementById(`objectMatrix${n}_${i}_1`);
                     let third = document.getElementById(`objectMatrix${n}_${i}_2`);
-                    if (second.value < 0) second.value = 0;
-                    if (second.value > 1) second.value = 1;
-                    first.value = (1 - second.value - third.value < 0) ? 0 : (1 - second.value - third.value).toFixed(2);
-                    third.value = (1 - first.value - second.value < 0) ? 0 : (1 - first.value - second.value).toFixed(2);
+                    second.value = format(second.value, 0, 1);
+                    first.value = format(1 - second.value - third.value, 0, 1);
+                    third.value = format(1 - first.value - second.value, 0, 1);
                     update();
                 }} /></td>
                 <td><input type="number" id={`objectMatrix${n}_${i}_2`} min="0" max="1" step="0.1" defaultValue="0.33" onInput={() => {
                     let first = document.getElementById(`objectMatrix${n}_${i}_0`);
                     let second = document.getElementById(`objectMatrix${n}_${i}_1`);
                     let third = document.getElementById(`objectMatrix${n}_${i}_2`);
-                    if (third.value < 0) third.value = 0;
-                    if (third.value > 1) third.value = 1;
-                    first.value = (1 - second.value - third.value < 0) ? 0 : (1 - second.value - third.value).toFixed(2);
-                    second.value = (1 - first.value - third.value < 0) ? 0 : (1 - first.value - third.value).toFixed(2);
+                    third.value = format(third.value, 0, 1);
+                    first.value = format(1 - second.value - third.value, 0, 1);
+                    second.value = format(1 - first.value - third.value, 0, 1);
                     update();
                 }} /></td>
             </tr>);

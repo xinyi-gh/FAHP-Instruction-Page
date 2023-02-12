@@ -70,7 +70,6 @@ td p {
 div#indicatorInputs, div#objectInputs {
     margin: 5px;
     padding: 5px;
-    width: 50%;
     border-style: dashed;
 }
 table:has(tbody#indicatorMatrix), table:has(tbody#objectMatrix) {
