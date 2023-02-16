@@ -14,8 +14,9 @@
             <h1>The Fusion of Subjectivity and Objectivity</h1>
             <h2>An interactive instruction about FAHP and FCE</h2>
             <span>By: <a href="https://github.com/xinyi-gh">Xinyi</a></span> <br />
+            <a href="https://github.com/xinyi-gh/FAHP-Instruction-Page">View the source</a> <br />
             Updated 2023.2.16 <br /> <br />
-            <a href="javascript:alert(`还没做呢`)">中文版本</a>
+            <a href="index_zh.html">中文版本</a>
         </header>
         
         <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
@@ -33,11 +34,11 @@
         <div class="fixed">
             <svg width="570" height="300" id="modelSVG"></svg> <br />
             <table>
-                <caption>indicators comparing</caption>
+                <caption>indicators comparing matrix</caption>
                 <tbody id="indicatorMatrix"></tbody>
             </table>
             <table>
-                <caption>object <span id="objectPage"></span><input type="button" value="&lt;" onclick="object_page_switch(false)"></input><input type="button" value="&gt;" onclick="object_page_switch(true)"></input></caption>
+                <caption>object evaluation matrix<span id="objectPage"></span><input type="button" value="&lt;" onclick="object_page_switch(false)"></input><input type="button" value="&gt;" onclick="object_page_switch(true)"></input></caption>
                 <tbody id="objectMatrix"></tbody>
             </table>
         </div>
@@ -46,7 +47,7 @@
             The indicators are used to evaluate the objects, and the proper indicators should have features most relevant to the objects. The relationship between the indicators can be multi-layer structure, but this instrcution will just use single-layer structure . <br /> <br />
             How many indicators do you want? (more than one) <input id="indicatorNum" type="range" value="3" min="2" max="6" stpe="1" oninput="update();" /> <span id="indicatorNumDisplay"></span> <br />
             Then input the name of the <span id="indicatorNumDisplay"></span> indicators. <br />
-            <div id="indicatorInputs" class="indicator$'s name"></div>
+            <div id="indicatorInputs" class="indicator$'s name: "></div>
             <b>Look to the right, the model is beginning to build!</b>
         <h2 id="section2">2 Building the Comparison Matrix</h2>
             In the previous part, we established a set of the indicators <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mo>=</mo><mo>{</mo><msub><mi>I</mi><mn>1</mn></msub><mo>,</mo><msub><mi>I</mi><mn>2</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>I</mi><mi>n</mi></msub><mo>}</mo></math>. <br />
