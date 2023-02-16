@@ -20,7 +20,7 @@ function update_indicator_inputs() {
     var inputList = []
     let key = 0;
     for (let i = 0; i < indicatorNum; i++) {
-        inputList.push(<span key={`updateIndicatorInputs_0_${key++}`}>indicator{i + 1}'s name: </span>);
+        inputList.push(<span key={`updateIndicatorInputs_0_${key++}`}>{document.getElementById("indicatorInputs").className.replace("$", i + 1)}</span>);
         inputList.push(<input key={`updateIndicatorInputs_1_${key++}`} type="text" id={`indicator_${i}`} onChange={update} />);
         inputList.push(<br key={`updateIndicatorInputs_2_${key++}`} />);
     }
@@ -39,7 +39,7 @@ function update_object_inputs() {
     var inputList = []
     let key = 0;
     for (let i = 0; i < objectNum; i++) {
-        inputList.push(<span key={`updateObjectInputs_0_${key++}`}>object{i + 1}'s name </span>);
+        inputList.push(<span key={`updateObjectInputs_0_${key++}`}>{document.getElementById("objectInputs").className.replace("$", i + 1)} </span>);
         inputList.push(<input key={`updateObjectInputs_0_${key++}`} type="text" id={`object_${i}`} onChange={update} />);
         inputList.push(<br key={`updateObjectInputs_0_${key++}`} />);
     }

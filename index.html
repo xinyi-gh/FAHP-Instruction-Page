@@ -46,7 +46,7 @@
             The indicators are used to evaluate the objects, and the proper indicators should have features most relevant to the objects. The relationship between the indicators can be multi-layer structure, but this instrcution will just use single-layer structure . <br /> <br />
             How many indicators do you want? (more than one) <input id="indicatorNum" type="range" value="3" min="2" max="6" stpe="1" oninput="update();" /> <span id="indicatorNumDisplay"></span> <br />
             Then input the name of the <span id="indicatorNumDisplay"></span> indicators. <br />
-            <div id="indicatorInputs"></div>
+            <div id="indicatorInputs" class="indicator$'s name"></div>
             <b>Look to the right, the model is beginning to build!</b>
         <h2 id="section2">2 Building the Comparison Matrix</h2>
             In the previous part, we established a set of the indicators <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>I</mi><mo>=</mo><mo>{</mo><msub><mi>I</mi><mn>1</mn></msub><mo>,</mo><msub><mi>I</mi><mn>2</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>I</mi><mi>n</mi></msub><mo>}</mo></math>. <br />
@@ -124,7 +124,7 @@
                 <i>(All the following describing about "object(s)" will use "objects" instead of "object" whether the number of the object is 1 or not because "object(s)" is prolix and controlling the char 's' is hard to code)</i><br />
                 How many objects do you want to evaluate? <input id="objectNum" type="range" value="3" min="1" max="6" stpe="1" oninput="update();" /> <span id="objectNumDisplay"></span> <br />
                 Then input the name of the <span id="objectNumDisplay"></span> objects.
-                <div id="objectInputs"></div>
+                <div id="objectInputs" class="object$'s name: "></div>
                 <b>As you can see, the objects are displayed in the model on the right.</b>
             <h3>4.2 Building the Membership Matrix</h3>
                 In order to evaluate the objects, we need some imformation about the objects first. Let a set of evaluation <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi><mo>=</mo><mo>{</mo><mi>E</mi><mi>x</mi><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>,</mo><mi>G</mi><mi>o</mi><mi>o</mi><mi>d</mi><mo>,</mo><mi>P</mi><mi>o</mi><mi>o</mi><mi>r</mi><mo>}</mo></math>
