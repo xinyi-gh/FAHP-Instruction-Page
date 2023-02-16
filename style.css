@@ -51,6 +51,7 @@ header a {
 }
 td.unchangeable, td.unchangeable input {
     background-color: gainsboro;
+    width:30px;
 }
 td {
     text-align: center;
@@ -62,7 +63,7 @@ td:has(p), td p {
 td p {
     word-break: break-all;
     font-size: 15px;
-    width:50px;
+    width:70px;
     height:50px;
     margin: 0px;
     overflow:hidden;
