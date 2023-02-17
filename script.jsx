@@ -248,6 +248,7 @@ function calculate_indicator_weight() {
 
 function calculate_object_score() {
     objectEvaluation = [];
+    objectScores = [];
     objectRanks = [];
 
     for (let n = 0; n < objectNum; n++) {
